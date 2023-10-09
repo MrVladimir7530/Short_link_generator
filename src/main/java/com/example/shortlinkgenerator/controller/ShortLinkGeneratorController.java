@@ -16,6 +16,6 @@ public class ShortLinkGeneratorController {
     @PostMapping("shortUrl")
     public ResponseEntity<String> getShortLink(@RequestBody ReqWithLongUrl reqWithLongUrl) {
         String shortLink = shortLinkGeneratorService.getShortLink(reqWithLongUrl.getLongUrl());
-        return ResponseEntity.ok("http://localhost:8080?link=" + shortLink);
+        return ResponseEntity.ok("http://localhost:8080/" + shortLink);
     }
 }
