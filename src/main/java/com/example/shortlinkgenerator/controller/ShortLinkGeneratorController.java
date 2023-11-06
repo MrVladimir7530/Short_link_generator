@@ -6,14 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("url")
+/**
+ * http://localhost:8080/url запрос по такому пути с post с типом Json
+ * {
+ *     "longUrl": "..........."
+ * }
+ */
+@RequestMapping("/url")
 @RestController
 public class ShortLinkGeneratorController {
 
     @Autowired
     private ShortLinkGeneratorService shortLinkGeneratorService;
 
-    @PostMapping("shortUrl")
+    @PostMapping()
     public ResponseEntity<String> getShortLink(@RequestBody ReqWithLongUrl reqWithLongUrl) {
         String shortLink = shortLinkGeneratorService.getShortLink(reqWithLongUrl.getLongUrl());
         return ResponseEntity.ok("http://localhost:8080/" + shortLink);
